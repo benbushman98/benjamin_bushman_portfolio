@@ -1,29 +1,29 @@
 import About from "./components/About";
-// import Blog from "./archive/Blog";
 import Contact from "./components/Contact";
-import Home from "./components/Home";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import HomeLab from "./components/HomeLab";
+import Services from "./components/Services";
 import Work from "./components/Work";
-import Layouts from "./layouts/Layouts";
 
 const App = () => {
   return (
-    <Layouts bodyCls={"dark fullscreendark"}>
-      {/* Back To Home Ends [ONLY MOBILE] */}
-      {/* Home Section Starts */}
-      <Home leftImg={true} />
-      {/* Home Section Ends */}
-      {/* About Section Starts */}
-      <About />
-      {/* About Section Ends */}
-      {/* Portfolio Section Starts */}
-      <Work />
-      {/* Portfolio Section Ends */}
-      {/* Contact Section Starts */}
-      <Contact />
-      {/* Contact Section Ends */}
-      {/* Blog Section Starts */}
-      {/* <Blog /> */}
-    </Layouts>
+    <>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <Header />
+      <main id="main">
+        <Hero />
+        <Work />
+        <Services />
+        <About />
+        <HomeLab />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 };
 export default App;

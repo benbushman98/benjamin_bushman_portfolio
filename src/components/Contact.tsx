@@ -1,211 +1,136 @@
 import emailjs from "emailjs-com";
-import { ChangeEvent, FormEvent, useContext, useState } from "react";
-import NavContext from "../context/navContext";
+import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const Contact = () => {
-  const { nav } = useContext(NavContext);
+type Status = "idle" | "sending" | "sent" | "error" | "missing" | "captcha";
 
+const messages: Record<Exclude<Status, "idle">, string> = {
+  sending: "Sending your message…",
+  sent: "Thanks, your message is on its way. I'll get back to you soon.",
+  error:
+    "Your message didn't send. Please try again, or email me at info@benjaminbushman.com.",
+  missing: "Please fill in your name, email and message.",
+  captcha: "Please check the “I'm not a robot” box before sending.",
+};
+
+const Contact = () => {
   const [mailData, setMailData] = useState({
     user_name: "",
     user_email: "",
     message: "",
   });
-
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [status, setStatus] = useState<Status>("idle");
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const { user_name, user_email, message } = mailData;
-  const [error, setError] = useState<boolean | null>(null);
 
   const onChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) =>
-    setMailData({ ...mailData, [e.target.name]: e.target.value });
-
-  const onRecaptchaChange = (token: string | null) => {
-    setRecaptchaToken(token);
-  };
+  ) => setMailData({ ...mailData, [e.target.name]: e.target.value });
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (user_name.length === 0 || user_email.length === 0 || message.length === 0) {
-      setError(true);
-      clearError();
-    } else if (!recaptchaToken) {
-      setError(true);
-      clearError();
-    } else {
-      emailjs
-        .send(
-          "service_abijmul", // service id
-          "template_i6yddu7", // template id
-          { ...mailData, "g-recaptcha-response": recaptchaToken },
-          "Je1lX0MpHjZ51x-nR" // public api
-        )
-        .then(
-          () => {
-            setError(false);
-            clearError();
-            setMailData({ user_name: "", user_email: "", message: "" });
-            setRecaptchaToken(null);
-          },
-          (err) => {
-            console.log(err.text);
-          }
-        );
+    if (!user_name.trim() || !user_email.trim() || !message.trim()) {
+      setStatus("missing");
+      return;
     }
+    if (!recaptchaToken) {
+      setStatus("captcha");
+      return;
+    }
+    setStatus("sending");
+    emailjs
+      .send(
+        "service_abijmul", // service id
+        "template_i6yddu7", // template id
+        { ...mailData, "g-recaptcha-response": recaptchaToken },
+        "Je1lX0MpHjZ51x-nR" // public api
+      )
+      .then(
+        () => {
+          setStatus("sent");
+          setMailData({ user_name: "", user_email: "", message: "" });
+          setRecaptchaToken(null);
+          recaptchaRef.current?.reset();
+        },
+        () => setStatus("error")
+      );
   };
 
-  const clearError = () => {
-    setTimeout(() => {
-      setError(null);
-    }, 2000);
-  };
+  const isProblem = status === "error" || status === "missing" || status === "captcha";
 
   return (
-    <section id="contact" className={`${nav === "contact" ? "active" : ""}`}>
-      <div className="contact-container">
-        <div className="container page-title text-center">
-          <h2 className="text-center">
-            get <span>in touch</span>
-          </h2>
-          <span className="title-head-subtitle">
-            I’m always open to discussing product design work or partnerships.
-          </span>
+    <section className="section" id="contact" aria-labelledby="contact-title">
+      <div className="container contact-grid">
+        <div className="section-head">
+          <p className="eyebrow">Contact</p>
+          <h2 id="contact-title">Let's talk</h2>
+          <p>
+            Need a website, an accessibility audit, or help with your network?
+            Hiring for a role I'd be good at? Send me a note and I'll get back
+            to you soon.
+          </p>
+          <ul className="contact-list">
+            <li>
+              <span className="contact-label">Email</span>
+              <a href="mailto:info@benjaminbushman.com">info@benjaminbushman.com</a>
+            </li>
+            <li>
+              <span className="contact-label">Phone</span>
+              <a href="tel:+18013721410">801-372-1410</a>
+            </li>
+            <li>
+              <span className="contact-label">LinkedIn</span>
+              <a href="https://www.linkedin.com/in/benjamin-bushman/" target="_blank" rel="noopener noreferrer">
+                in/benjamin-bushman<span className="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </li>
+            <li>
+              <span className="contact-label">GitHub</span>
+              <a href="https://github.com/benbushman98" target="_blank" rel="noopener noreferrer">
+                benbushman98<span className="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </li>
+          </ul>
         </div>
-        <div className="container">
-          <div className="row contact">
-            <div className="col-12 col-md-4 col-xl-4 leftside">
-              <ul className="custom-list">
-                <li>
-                  <h6 className="font-weight-600">
-                    <span className="contact-title">Phone</span>
-                    <i className="fa fa-whatsapp" />
-                    <span className="contact-content">801-372-1410</span>
-                  </h6>
-                </li>
-                <li>
-                  <h6 className="font-weight-600">
-                    <span className="contact-title">email</span>
-                    <i className="fa fa-envelope-o fs-14" />
-                    <span className="contact-content">info@benjaminbushman.com</span>
-                  </h6>
-                </li>
-                <li>
-                  <h6 className="font-weight-600">
-                    <span className="contact-title">LinkedIn</span>
-                    <i className="fa fa-linkedin" />
-                    <span className="contact-content">
-                      <a
-                        href="https://www.linkedin.com/in/benjamin-bushman/"
-                        className="text-white"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        /in/benjamin-bushman
-                      </a>
-                    </span>
-                  </h6>
-                </li>
-                <li>
-                  <h6 className="font-weight-600">
-                    <span className="contact-title">GitHub</span>
-                    <i className="fa fa-github" />
-                    <span className="contact-content">
-                      <a
-                        href="https://github.com/benbushman98"
-                        className="text-white"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        benbushman98
-                      </a>
-                    </span>
-                  </h6>
-                </li>
-              </ul>
-            </div>
-            <div className="col-12 col-md-8 col-xl-8 rightside">
-              <p>
-                If you have any suggestion, project or even you want to say Hello... please fill out the form below and I will reply you shortly.
-              </p>
-              <form className="contactform" onSubmit={onSubmit}>
-                <div className="row">
-                  <div className="form-group col-xl-6">
-                    <i className="fa fa-user prefix" />
-                    <input
-                      id="name"
-                      name="user_name"
-                      onChange={onChange}
-                      value={user_name}
-                      type="text"
-                      className="form-control"
-                      placeholder="YOUR NAME"
-                      required
-                    />
-                  </div>
-                  <div className="form-group col-xl-6">
-                    <i className="fa fa-envelope prefix" />
-                    <input
-                      id="email"
-                      type="email"
-                      name="user_email"
-                      onChange={onChange}
-                      value={user_email}
-                      className="form-control"
-                      placeholder="YOUR EMAIL"
-                      required
-                    />
-                  </div>
-                  <div className="form-group col-xl-12">
-                    <i className="fa fa-comments prefix" />
-                    <textarea
-                      id="comment"
-                      name="message"
-                      onChange={onChange}
-                      value={message}
-                      className="form-control"
-                      placeholder="YOUR MESSAGE"
-                      required
-                    />
-                  </div>
-                </div>
 
-                <div className="form-group col-xl-12">
-                  <ReCAPTCHA
-                    sitekey="6Lcs-QUqAAAAAAZG6tRMnZ4SDeoZxJzLmCh5i9IP"
-                    onChange={onRecaptchaChange}
-                  />
-                </div>
-
-                <div className="submit-form">
-                  <button
-                    className="btn button-animated"
-                    type="submit"
-                    name="send"
-                  >
-                    <span>
-                      <i className="fa fa-send" /> Send Message
-                    </span>
-                  </button>
-                </div>
-
-                <div className="form-message">
-                  <div
-                    className={error ? "empty_notice" : "returnmessage"}
-                    style={{ display: error == null ? "none" : "block" }}
-                  >
-                    <span>
-                      {error
-                        ? "Please Fill Required Fields"
-                        : "Your message has been received, We will contact you soon."}
-                    </span>
-                  </div>
-                  <span className="output_message text-center font-weight-600 uppercase" />
-                </div>
-              </form>
-            </div>
+        <form className="contact-form" onSubmit={onSubmit} noValidate>
+          <div className="field">
+            <label htmlFor="name">Name</label>
+            <input id="name" name="user_name" type="text" autoComplete="name" value={user_name} onChange={onChange} required />
           </div>
-        </div>
+          <div className="field">
+            <label htmlFor="email">Email</label>
+            <input id="email" name="user_email" type="email" autoComplete="email" value={user_email} onChange={onChange} required />
+          </div>
+          <div className="field">
+            <label htmlFor="message">Message</label>
+            <textarea id="message" name="message" rows={6} value={message} onChange={onChange} required />
+          </div>
+          <div className="captcha">
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey="6Lcs-QUqAAAAAAZG6tRMnZ4SDeoZxJzLmCh5i9IP"
+              onChange={setRecaptchaToken}
+            />
+          </div>
+          <div className="form-footer">
+            <button className="button" type="submit" disabled={status === "sending"}>
+              Send message
+            </button>
+            <p className="form-note">
+              Sent through EmailJS and protected by Google reCAPTCHA. See the{" "}
+              <a href="/privacy/">privacy policy</a>.
+            </p>
+          </div>
+          <p
+            className={`form-status ${isProblem ? "is-error" : ""} ${status === "sent" ? "is-success" : ""}`}
+            role="status"
+            aria-live="polite"
+          >
+            {status !== "idle" && messages[status]}
+          </p>
+        </form>
       </div>
     </section>
   );

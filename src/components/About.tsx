@@ -1,432 +1,119 @@
-import { useContext } from "react";
-import NavContext from "../context/navContext";
+const experience = [
+  {
+    role: "Project Manager, Software",
+    org: "American Heritage Worldwide",
+    dates: "Mar 2023 – Present",
+    body: "I run the software team's daily scrum, manage developer tasks, report performance and metrics to the product owner, and extend our React and TypeScript projects.",
+  },
+  {
+    role: "Web Developer",
+    org: "Network Providers, Inc.",
+    dates: "Jan 2023 – Present",
+    body: "I build and maintain websites for clients with React, Next.js, TypeScript and WordPress.",
+  },
+  {
+    role: "Network Administrator",
+    org: "Network Providers, Inc.",
+    dates: "Oct 2020 – May 2023",
+    body: "I managed over 1,000 student and 200 faculty accounts and devices, plus the file servers, wireless access points, domains and DNS servers behind them.",
+  },
+];
+
+const education = [
+  {
+    role: "Web Development Bootcamp",
+    org: "University of Utah",
+    dates: "Jun – Nov 2022",
+    body: "Six months of JavaScript, React, MongoDB and MySQL. I finished second in a cohort of 80.",
+  },
+  {
+    role: "High School Diploma",
+    org: "American Heritage School",
+    dates: "2016",
+    body: "Graduated with honors.",
+  },
+];
+
+const skills = [
+  {
+    group: "Web",
+    items: ["React", "TypeScript", "JavaScript", "HTML & CSS", "Tailwind", "Vite", "Next.js", "Shopify", "WordPress", "Figma"],
+  },
+  {
+    group: "Accessibility",
+    items: ["ADA compliance", "WCAG 2.1 AA", "Accessibility audits", "Remediation"],
+  },
+  {
+    group: "Infrastructure",
+    items: ["DNS", "Networking", "VLANs", "VPNs", "OpenWrt", "Docker", "Self-hosting", "AWS"],
+  },
+  {
+    group: "Leadership",
+    items: ["Scrum", "Project management", "Client communication"],
+  },
+];
+
+const Timeline = ({ items }: { items: typeof experience }) => (
+  <ol className="timeline">
+    {items.map((item) => (
+      <li key={item.role + item.org}>
+        <p className="timeline-dates">{item.dates}</p>
+        <h4>{item.role}</h4>
+        <p className="timeline-org">{item.org}</p>
+        <p>{item.body}</p>
+      </li>
+    ))}
+  </ol>
+);
+
 const About = () => {
-  const { nav } = useContext(NavContext);
-  const today = new Date();
-  const start = new Date(2022, 5, 1); // Months are 0-based, so 5 is June
-  
-  let yearsOfExperience = today.getFullYear() - start.getFullYear();
-  const monthsOfExperience = today.getMonth() - start.getMonth();
-  
-  if (monthsOfExperience < 0 || (monthsOfExperience === 0 && today.getDate() < start.getDate())) {
-      yearsOfExperience--;
-  }
-  
   return (
-    <section id="about" className={`${nav === "about" ? "active" : ""}`}>
-      {/* Main Heading Starts */}
-      <div className="container page-title text-center">
-        <h2 className="text-center">
-          about <span>me</span>
-        </h2>
-        <span className="title-head-subtitle">
-          I design and code functional and compliant websites
-        </span>
-      </div>
-      {/* Main Heading Ends */}
-      <div className="container infos">
-        <div className="row personal-info">
-          {/* Personal Infos Starts */}
-          <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-            <div className="image-container">
-              <img
-                className="img-fluid d-block"
-                src="img/about_bushman.jpg"
-                alt="Benjamin Bushman"
-              />
-            </div>
-            <p className="d-block d-md-none">
-              {`I'm`} a Freelance UI/UX Designer and Developer based in Idaho, USA.
-              I strives to build immersive and beautiful web
-              applications through carefully crafted code and user-centric
-              design.
+    <section className="section" id="about" aria-labelledby="about-title">
+      <div className="container">
+        <div className="about-grid">
+          <div className="section-head about-intro">
+            <p className="eyebrow">About me</p>
+            <h2 id="about-title">From network closets to front-end code</h2>
+            <p>
+              I started out in IT, keeping school networks, servers and DNS
+              running. In 2022 I took the University of Utah's web development
+              bootcamp and found the work I love: building websites people
+              actually enjoy using.
             </p>
+            <p>
+              Today I manage a software team at American Heritage Worldwide,
+              build sites at Network Providers, and take on freelance projects
+              for businesses across Idaho, Utah and beyond. That mix means I can
+              talk to developers, business owners and IT staff in their own
+              language.
+            </p>
+            <a className="text-link" href="https://www.linkedin.com/in/benjamin-bushman/" target="_blank" rel="noopener noreferrer">
+              See my LinkedIn<span className="visually-hidden"> (opens in a new tab)</span>
+            </a>
           </div>
-          <div className="row col-xl-6 col-lg-6 col-md-12">
-            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-              <ul className="list-1">
-                <li>
-                  <h6>
-                    <span className="font-weight-600">First Name</span>
-                    Benjamin
-                  </h6>
-                </li>
-                <li>
-                  <h6>
-                    <span className="font-weight-600">Last Name</span>
-                    Bushman
-                  </h6>
-                </li>
-                <li>
-                  <h6>
-                    <span className="font-weight-600">Nationality</span>
-                    American
-                  </h6>
-                </li>
-                <li>
-                  <h6>
-                    <span className="font-weight-600">Experience</span>{yearsOfExperience} years
-                  </h6>
-                </li>
-                <li>
-                  <h6>
-                    <span className="font-weight-600">Location</span>
-                    Idaho, USA
-                  </h6>
-                </li>
-               
-              </ul>
-            </div>
-            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-              <ul className="list-2">
-                <li>
-                  <h6>
-                    <span className="font-weight-600">Languages</span>
-                    English
-                  </h6>
-                </li>
-                <li>
-                  <h6>
-                    <span className="font-weight-600">Phone</span>801-372-1410
-                  </h6>
-                </li>
-                <li>
-                  <h6>
-                    <span className="font-weight-600">Email</span>
-                    info@benjaminbushman.com
-                  </h6>
-                </li>
-                <li>
-                  <h6>
-                    <span className="font-weight-600">Freelance</span>
-                    Available
-                  </h6>
-                </li>
-              </ul>
-            </div>
-            {/* <div className="col-12 resume-btn-container">
-              <a href="#" className="btn btn-resume">
-                <span>
-                  <i className="fa fa-download" />
-                  download my cv
-                </span>
-              </a>
-            </div> */}
+          <div className="resume">
+            <h3>Experience</h3>
+            <Timeline items={experience} />
+            <h3>Education</h3>
+            <Timeline items={education} />
           </div>
-          {/* Personal Infos Ends */}
         </div>
-      </div>
-      {/* Download CV Starts */}
-      <div className="container col-12 mx-auto text-center">
-        <hr className="about-section" />
-      </div>
-      {/* Download CV Ends */}
-      {/* Resume Starts */}
-      <div className="resume-container">
-        <div className="container">
-          <div className="row">
-            {/* Experience Starts */}
-            <div className="col-xl-6 col-lg-6 col-md-6">
-              <h2 className="font-weight-600 uppercase title-section">
-                experience
-              </h2>
-              <div className="resume-items">
-                {/* Item Starts */}
-                <div className="item">
-                  <span className="bullet" />
-                  <div className="card">
-                    <div className="card-header">
-                      <span className="year">
-                        <i className="fa fa-calendar" />
-                        <i className="fa fa-caret-right" />
-                        Mar 2023 - Present
-                      </span>
-                      <span className="d-block font-weight-400 uppercase">
-                        Project Manager, Software
-                        <span className="separator" />
-                        <span className="font-weight-700">American Heritage Worldwide</span>
-                      </span>
-                    </div>
-                    <div className="card-body">
-                      <p>
-                        Project Manager over software team. Running daily scrum meeting, managing developer tasks, reporting performance and metrics to Product Owner, extending current React and TypeScript projects.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                {/* Item Ends */}
-                {/* Item Starts */}
-                <div className="item">
-                  <span className="bullet" />
-                  <div className="card">
-                    <div className="card-header">
-                      <span className="year">
-                        <i className="fa fa-calendar" />
-                        <i className="fa fa-caret-right" />
-                        Jan 2023 - Present
-                      </span>
-                      <span className="d-block font-weight-400 uppercase">
-                        web developer
-                        <span className="separator" />
-                        <span className="font-weight-700">Network Providers Inc.</span>
-                      </span>
-                    </div>
-                    <div className="card-body">
-                      <p>
-                        Front end developer building and maintaining websites for clients. React, Next.js, TypeScript, Wordpress.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                {/* Item Ends */}
-                {/* Item Starts */}
-                <div className="item">
-                  <span className="bullet" />
-                  <div className="card">
-                    <div className="card-header">
-                      <span className="year">
-                        <i className="fa fa-calendar" />
-                        <i className="fa fa-caret-right" />
-                        Oct 2020 - May 2023
-                      </span>
-                      <span className="d-block font-weight-400 uppercase">
-                        Network Administrator
-                        <span className="separator" />
-                        <span className="font-weight-700">Network Providers Inc.</span>
-                      </span>
-                    </div>
-                    <div className="card-body">
-                      <p>
-                        Network Administrator managing 1000+ student and 200+ faculty accounts and devices. 
-                        Managing all file servers, internet access points, domains, and DNS servers.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                {/* Item Ends */}
+
+        <div className="skills">
+          <h3>Skills</h3>
+          <div className="skills-grid">
+            {skills.map((s) => (
+              <div key={s.group}>
+                <h4>{s.group}</h4>
+                <ul className="tags">
+                  {s.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
               </div>
-            </div>
-            {/* Experience Ends */}
-            {/* Education Starts */}
-            <div className="col-xl-6 col-lg-6 col-md-6 skills-container">
-              <h2 className="font-weight-600 uppercase title-section">
-                Education
-              </h2>
-              <div className="resume-items">
-                {/* Item Starts */}
-                <div className="item">
-                  <span className="bullet" />
-                  <div className="card">
-                    <div className="card-header">
-                      <span className="year">
-                        <i className="fa fa-calendar" />
-                        <i className="fa fa-caret-right" />
-                        June 2022 - Nov 2022
-                      </span>
-                      <span className="d-block font-weight-400 uppercase">
-                        Web Development Bootcamp
-                        <span className="separator" />
-                        <span className="font-weight-700">
-                          University of Utah
-                        </span>
-                      </span>
-                    </div>
-                    <div className="card-body">
-                      <p>
-                        Participated and completed the 6 month web development bootcamp. Finished second in cohort of 80 students.
-                        Learned JavaScript, React, MongoDB, MySQL, and various industry standards and best practices.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                {/* Item Ends */}
-                {/* Item Starts */}
-                <div className="item">
-                  <span className="bullet" />
-                  <div className="card">
-                    <div className="card-header">
-                      <span className="year">
-                        <i className="fa fa-calendar" />
-                        <i className="fa fa-caret-right" />
-                        2016
-                      </span>
-                      <span className="d-block font-weight-400 uppercase">
-                        High School Degree
-                        <span className="separator" />
-                        <span className="font-weight-700">
-                          American Heritage School
-                        </span>
-                      </span>
-                    </div>
-                    <div className="card-body">
-                      <p>
-                      Successfully completed high school with a strong academic record, demonstrating dedication and perseverance. 
-                      Graduated with honors, actively participating in extracurricular activities and community service projects.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                {/* Item Ends */}
-              </div>
-            </div>
-            {/* Education Ends */}
+            ))}
           </div>
-          {/* Skills Starts */}
-          <div className="row">
-            {/* Skill Bar Starts */}
-            <div className="col-12">
-              <h2 className="font-weight-600 uppercase title-section skills-title">
-                skills
-              </h2>
-            </div>
-            {/* Skill Bar Starts */}
-            <div className="col-12 col-sm-6 col-md-4">
-              <span className="skill-text">html</span>
-              <div className="chart-bar">
-                <span
-                  className="item-progress"
-                  data-percent={80}
-                  style={{ width: "80%" }}
-                />
-                <span className="percent" style={{ right: "calc(20% - 21px)" }}>
-                  80%
-                  <b className="arrow" />
-                </span>
-              </div>
-            </div>
-            {/* Skill Bar Ends */}
-            {/* Skill Bar Starts */}
-            <div className="col-12 col-sm-6 col-md-4">
-              <span className="skill-text">javascript</span>
-              <div className="chart-bar">
-                <span
-                  className="item-progress"
-                  data-percent={60}
-                  style={{ width: "60%" }}
-                />
-                <span className="percent" style={{ right: "calc(40% - 21px)" }}>
-                  70%
-                  <b className="arrow" />
-                </span>
-              </div>
-            </div>
-            {/* Skill Bar Ends */}
-            {/* Skill Bar Starts */}
-            <div className="col-12 col-sm-6 col-md-4">
-              <span className="skill-text">css</span>
-              <div className="chart-bar">
-                <span
-                  className="item-progress"
-                  data-percent={75}
-                  style={{ width: "75%" }}
-                />
-                <span className="percent" style={{ right: "calc(25% - 21px)" }}>
-                  75%
-                  <b className="arrow" />
-                </span>
-              </div>
-            </div>
-            {/* Skill Bar Ends */}
-            {/* Skill Bar Starts */}
-            <div className="col-12 col-sm-6 col-md-4">
-              <span className="skill-text">TypeScript</span>
-              <div className="chart-bar">
-                <span
-                  className="item-progress"
-                  data-percent={50}
-                  style={{ width: "50%" }}
-                />
-                <span className="percent" style={{ right: "calc(50% - 21px)" }}>
-                  50%
-                  <b className="arrow" />
-                </span>
-              </div>
-            </div>
-            {/* Skill Bar Ends */}
-            {/* Skill Bar Starts */}
-            <div className="col-12 col-sm-6 col-md-4">
-              <span className="skill-text">wordpress</span>
-              <div className="chart-bar">
-                <span
-                  className="item-progress"
-                  data-percent={90}
-                  style={{ width: "90%" }}
-                />
-                <span className="percent" style={{ right: "calc(10% - 21px)" }}>
-                  90%
-                  <b className="arrow" />
-                </span>
-              </div>
-            </div>
-            {/* Skill Bar Ends */}
-            {/* Skill Bar Starts */}
-            <div className="col-12 col-sm-6 col-md-4">
-              <span className="skill-text">React</span>
-              <div className="chart-bar">
-                <span
-                  className="item-progress"
-                  data-percent={85}
-                  style={{ width: "85%" }}
-                />
-                <span className="percent" style={{ right: "calc(15% - 21px)" }}>
-                  85%
-                  <b className="arrow" />
-                </span>
-              </div>
-            </div>
-            {/* Skill Bar Ends */}
-            {/* Skill Bar Starts */}
-            <div className="col-12 col-sm-6 col-md-4">
-              <span className="skill-text">AWS</span>
-              <div className="chart-bar">
-                <span
-                  className="item-progress"
-                  data-percent={40}
-                  style={{ width: "40%" }}
-                />
-                <span className="percent" style={{ right: "calc(60% - 21px)" }}>
-                  40%
-                  <b className="arrow" />
-                </span>
-              </div>
-            </div>
-            {/* Skill Bar Ends */}
-            {/* Skill Bar Starts */}
-            <div className="col-12 col-sm-6 col-md-4">
-              <span className="skill-text">Figma</span>
-              <div className="chart-bar">
-                <span
-                  className="item-progress"
-                  data-percent={75}
-                  style={{ width: "75%" }}
-                />
-                <span className="percent" style={{ right: "calc(25% - 21px)" }}>
-                  75%
-                  <b className="arrow" />
-                </span>
-              </div>
-            </div>
-            {/* Skill Bar Ends */}
-            {/* Skill Bar Starts */}
-            <div className="col-12 col-sm-6 col-md-4">
-              <span className="skill-text">DNS</span>
-              <div className="chart-bar">
-                <span
-                  className="item-progress"
-                  data-percent={95}
-                  style={{ width: "95%" }}
-                />
-                <span className="percent" style={{ right: "calc(5% - 21px)" }}>
-                  95%
-                  <b className="arrow" />
-                </span>
-              </div>
-            </div>
-            {/* Skill Bar Ends */}
-          </div>
-          {/* Skills Starts */}
         </div>
-        {/* Resume Ends */}
       </div>
     </section>
   );
