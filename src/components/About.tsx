@@ -67,19 +67,19 @@ const education = [
 const skills = [
   {
     group: "Web",
-    items: ["React", "TypeScript", "JavaScript", "Node.js", "HTML & CSS", "Tailwind", "Vite", "Next.js", "Shopify", "WordPress", "Git & GitHub", "Figma"],
+    body: "React, TypeScript and Node.js every day, plus Next.js, Vite, Tailwind, Shopify, WordPress, Git and Figma.",
   },
   {
     group: "Accessibility",
-    items: ["ADA compliance", "WCAG 2.1 AA", "Accessibility audits", "Remediation"],
+    body: "ADA and WCAG 2.1 AA audits and fixes, for new builds and existing sites.",
   },
   {
     group: "Infrastructure",
-    items: ["DNS", "Networking", "VLANs", "VPNs", "OpenWrt", "Docker", "Self-hosting", "AWS", "Help desk", "Hardware"],
+    body: "DNS, networking, VLANs, VPNs, OpenWrt, Docker, self-hosting and AWS, built on years of help desk and hardware work.",
   },
   {
     group: "Leadership",
-    items: ["Scrum", "Agile", "Project management", "Teaching", "Client communication"],
+    body: "Scrum and agile, project management, teaching, and working directly with clients.",
   },
 ];
 
@@ -87,9 +87,11 @@ const Timeline = ({ items }: { items: typeof experience }) => (
   <ol className="timeline">
     {items.map((item) => (
       <li key={item.role + item.org}>
-        <p className="timeline-dates">{item.dates}</p>
         <h4>{item.role}</h4>
-        <p className="timeline-org">{item.org}</p>
+        <p className="timeline-org">
+          {item.org}
+          <span className="timeline-dates"> · {item.dates}</span>
+        </p>
         <p>{item.body}</p>
       </li>
     ))}
@@ -102,7 +104,6 @@ const About = () => {
       <div className="container">
         <div className="about-grid">
           <div className="section-head about-intro">
-            <p className="eyebrow">About me</p>
             <h2 id="about-title">From network closets to front-end code</h2>
             <p>
               I started in IT in 2019, fixing computers and working help desks,
@@ -138,11 +139,7 @@ const About = () => {
             {skills.map((s) => (
               <div key={s.group}>
                 <h4>{s.group}</h4>
-                <ul className="tags">
-                  {s.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                <p>{s.body}</p>
               </div>
             ))}
           </div>

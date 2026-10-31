@@ -17,7 +17,6 @@ const Work = () => {
     <section className="section" id="work" aria-labelledby="work-title">
       <div className="container">
         <div className="section-head">
-          <p className="eyebrow">Selected work</p>
           <h2 id="work-title">Sites I've designed and built</h2>
           <p>
             Every site here is live, and every one was built by me. Click any of

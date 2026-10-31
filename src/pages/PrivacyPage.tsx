@@ -4,7 +4,7 @@ const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
 const NewTab = () => <span className="visually-hidden"> (opens in a new tab)</span>;
 
 const PrivacyPage = () => (
-  <Page eyebrow="Privacy" title="Privacy policy" updated="October 31, 2026">
+  <Page title="Privacy policy" updated="October 31, 2026">
     <p className="doc-lead">
       This is my personal portfolio site. It has no accounts, no advertising
       and no analytics, and it doesn't use cookies of its own to track you. Here

@@ -6,7 +6,6 @@ import NotFoundPage from "./pages/NotFoundPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import "@fontsource-variable/bricolage-grotesque";
 import "@fontsource-variable/instrument-sans";
-import "@fontsource-variable/jetbrains-mono";
 import "./styles.css";
 
 // Each HTML page sets data-page on #root to pick what to render.

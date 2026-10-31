@@ -12,7 +12,6 @@ const HomeLab = () => {
     <section className="section section-tint" id="homelab" aria-labelledby="homelab-title">
       <div className="container homelab-grid">
         <div className="section-head">
-          <p className="eyebrow">After hours</p>
           <h2 id="homelab-title">My home lab</h2>
           <p>
             I run my own servers at home. It's where I try new tools before
@@ -24,8 +23,9 @@ const HomeLab = () => {
         <ul className="lab">
           {services.map((s) => (
             <li key={s.name}>
-              <p className="lab-role">{s.role}</p>
-              <h3>{s.name}</h3>
+              <h3>
+                {s.name} <span className="lab-role">{s.role}</span>
+              </h3>
               <p>{s.body}</p>
             </li>
           ))}

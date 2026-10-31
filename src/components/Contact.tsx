@@ -63,7 +63,6 @@ const Contact = () => {
     <section className="section" id="contact" aria-labelledby="contact-title">
       <div className="container contact-grid">
         <div className="section-head">
-          <p className="eyebrow">Contact</p>
           <h2 id="contact-title">Let's talk</h2>
           <p>
             Need a website, an accessibility audit, or help with your network?

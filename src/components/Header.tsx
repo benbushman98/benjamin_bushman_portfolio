@@ -22,9 +22,6 @@ const Header = () => {
     <header className="site-header">
       <div className="container header-inner">
         <a className="wordmark" href="/" onClick={() => setOpen(false)}>
-          <span className="wordmark-mark" aria-hidden="true">
-            BB
-          </span>
           Benjamin Bushman
         </a>
         <button

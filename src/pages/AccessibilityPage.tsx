@@ -1,7 +1,7 @@
 import Page from "../components/Page";
 
 const AccessibilityPage = () => (
-  <Page eyebrow="Accessibility" title="Accessibility statement" updated="October 31, 2026">
+  <Page title="Accessibility statement" updated="October 31, 2026">
     <p className="doc-lead">
       I help businesses make their websites work for everyone, so I hold my own
       site to the same standard. This site is designed to meet the Web Content
