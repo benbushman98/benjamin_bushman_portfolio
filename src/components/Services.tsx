@@ -10,9 +10,9 @@ const services = [
     points: ["ADA audits", "WCAG fixes", "Existing sites too"],
   },
   {
-    title: "Hosting & care",
-    body: "I set up and look after the parts people forget: domains, DNS, SSL, business email and backups. When something breaks, you call me, not a support queue.",
-    points: ["Domains and DNS", "Business email", "Updates"],
+    title: "Launch & setup",
+    body: "I take care of the parts people forget: domains, DNS, SSL and business email, and I get your site running on a reliable hosting provider. When you need a change, you call me, not a support queue.",
+    points: ["Domains and DNS", "Business email", "Reliable hosting"],
   },
   {
     title: "IT & networking",

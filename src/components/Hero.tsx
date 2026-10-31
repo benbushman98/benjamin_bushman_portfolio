@@ -7,14 +7,14 @@ const Hero = () => {
         <div className="hero-copy">
           <p className="eyebrow">Web developer · Network administrator · Idaho</p>
           <h1 id="hero-title">
-            I build websites for businesses, and I keep the servers behind them
-            running.
+            I build websites that are fast, accessible and set up right.
           </h1>
           <p className="lead">
-            I'm Benjamin Bushman. I design and build fast, accessible websites,
-            from local shops in the Bear Lake Valley to companies across Utah
-            and beyond. Before I wrote code, I ran networks, so I look after
-            everything a site depends on too: hosting, DNS, email and security.
+            I'm Benjamin Bushman. I design and build websites for local shops in
+            the Bear Lake Valley and companies across Utah and beyond. Before I
+            wrote code, I ran networks, so I also handle the setup most
+            developers hand off: domains, DNS, business email, and hosting with
+            a provider you can trust.
           </p>
           <div className="hero-actions">
             <a className="button" href="#work">
