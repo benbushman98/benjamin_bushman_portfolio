@@ -5,7 +5,7 @@ const Hero = () => {
     <section className="hero" id="top" aria-labelledby="hero-title">
       <div className="container hero-grid">
         <div className="hero-copy">
-          <p className="eyebrow">Web developer · Network administrator · Idaho</p>
+          <p className="eyebrow">Software developer · IT background · Idaho</p>
           <h1 id="hero-title">
             I build websites that are fast, accessible and set up right.
           </h1>
@@ -45,8 +45,8 @@ const Hero = () => {
             <dd>ADA &amp; WCAG</dd>
           </div>
           <div>
-            <dt>Network admin since</dt>
-            <dd>2020</dd>
+            <dt>Working in IT since</dt>
+            <dd>2019</dd>
           </div>
           <div>
             <dt>Stack</dt>

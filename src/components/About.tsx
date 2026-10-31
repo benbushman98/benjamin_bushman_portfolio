@@ -1,21 +1,51 @@
 const experience = [
   {
-    role: "Project Manager, Software",
+    role: "Software Developer",
     org: "American Heritage Worldwide",
-    dates: "Mar 2023 – Present",
-    body: "I run the software team's daily scrum, manage developer tasks, report performance and metrics to the product owner, and extend our React and TypeScript projects.",
+    dates: "Mar 2023 – Present · Remote",
+    body: "I build and extend the organization's React and TypeScript projects.",
   },
   {
-    role: "Web Developer",
+    role: "Project Manager",
+    org: "American Heritage Worldwide",
+    dates: "May 2024 – Aug 2026",
+    body: "I ran the software team's daily scrum, managed developer tasks, and reported performance and metrics to the product owner.",
+  },
+  {
+    role: "Full Stack Developer",
     org: "Network Providers, Inc.",
-    dates: "Jan 2023 – Present",
-    body: "I build and maintain websites for clients with React, Next.js, TypeScript and WordPress.",
+    dates: "Feb 2023 – Present · Part-time",
+    body: "I build custom websites and their back ends for the company's clients with React and Node.js.",
+  },
+  {
+    role: "Instructional Staff, Coding Bootcamp",
+    org: "University of Utah Professional Education",
+    dates: "Dec 2022 – Mar 2024",
+    body: "After finishing the bootcamp, I stayed on to help new students through the curriculum: APIs and JSON, CSS and Bootstrap, the command line, databases, React and Git.",
   },
   {
     role: "Network Administrator",
     org: "Network Providers, Inc.",
-    dates: "Oct 2020 – May 2023",
-    body: "I managed over 1,000 student and 200 faculty accounts and devices, plus the file servers, wireless access points, domains and DNS servers behind them.",
+    dates: "Apr 2021 – May 2023",
+    body: "On-site at American Heritage School, a Network Providers client. I managed over 1,000 student and 200 faculty accounts and devices, plus the file servers, wireless access points, domains and DNS servers behind them.",
+  },
+  {
+    role: "Help Desk Technician",
+    org: "Network Providers, Inc.",
+    dates: "Oct 2020 – Apr 2021",
+    body: "I supported more than 50 business clients on the help desk.",
+  },
+  {
+    role: "Help Desk Support",
+    org: "SB Tech Guys",
+    dates: "Oct 2019 – Oct 2022 · Part-time",
+    body: "I troubleshot hardware and software problems for remote clients.",
+  },
+  {
+    role: "Computer Technician",
+    org: "TAMS Computer Recycling and Sales",
+    dates: "Jul 2019 – Oct 2020",
+    body: "I worked on the desktop team, handling computers that clients sent in.",
   },
 ];
 
@@ -37,7 +67,7 @@ const education = [
 const skills = [
   {
     group: "Web",
-    items: ["React", "TypeScript", "JavaScript", "HTML & CSS", "Tailwind", "Vite", "Next.js", "Shopify", "WordPress", "Figma"],
+    items: ["React", "TypeScript", "JavaScript", "Node.js", "HTML & CSS", "Tailwind", "Vite", "Next.js", "Shopify", "WordPress", "Git & GitHub", "Figma"],
   },
   {
     group: "Accessibility",
@@ -45,11 +75,11 @@ const skills = [
   },
   {
     group: "Infrastructure",
-    items: ["DNS", "Networking", "VLANs", "VPNs", "OpenWrt", "Docker", "Self-hosting", "AWS"],
+    items: ["DNS", "Networking", "VLANs", "VPNs", "OpenWrt", "Docker", "Self-hosting", "AWS", "Help desk", "Hardware"],
   },
   {
     group: "Leadership",
-    items: ["Scrum", "Project management", "Client communication"],
+    items: ["Scrum", "Agile", "Project management", "Teaching", "Client communication"],
   },
 ];
 
@@ -75,17 +105,20 @@ const About = () => {
             <p className="eyebrow">About me</p>
             <h2 id="about-title">From network closets to front-end code</h2>
             <p>
-              I started out in IT, keeping school networks, servers and DNS
-              running. In 2022 I took the University of Utah's web development
-              bootcamp and found the work I love: building websites people
-              actually enjoy using.
+              I started in IT in 2019, fixing computers and working help desks,
+              and went on to run the network for American Heritage School. In
+              2022 I took the University of Utah's web development bootcamp and
+              found the work I love: building websites people actually enjoy
+              using. I liked it enough to stay on as instructional staff for
+              the next class.
             </p>
             <p>
-              Today I manage a software team at American Heritage Worldwide,
-              build sites at Network Providers, and take on freelance projects
-              for businesses across Idaho, Utah and beyond. That mix means I can
-              talk to developers, business owners and IT staff in their own
-              language.
+              Today I'm a software developer at American Heritage Worldwide,
+              where I also spent two years as the software team's project
+              manager. I build client sites part-time at Network Providers and
+              take on freelance projects for businesses across Idaho, Utah and
+              beyond. That mix means I can talk to developers, business owners
+              and IT staff in their own language.
             </p>
             <a className="text-link" href="https://www.linkedin.com/in/benjamin-bushman/" target="_blank" rel="noopener noreferrer">
               See my LinkedIn<span className="visually-hidden"> (opens in a new tab)</span>

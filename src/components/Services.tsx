@@ -16,7 +16,7 @@ const services = [
   },
   {
     title: "IT & networking",
-    body: "I've managed networks since 2020, including one with over 1,000 student and 200 staff accounts. I set up office Wi-Fi, firewalls, VLANs and VPNs, and help you plan servers or cloud storage.",
+    body: "I've worked in IT since 2019, from the help desk to running a school network with over 1,000 student and 200 staff accounts. I set up office Wi-Fi, firewalls, VLANs and VPNs, and help you plan servers or cloud storage.",
     points: ["Wi-Fi and firewalls", "VLANs and VPNs", "Servers"],
   },
 ];
