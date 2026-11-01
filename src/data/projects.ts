@@ -27,6 +27,15 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "bushmanfamily",
+    name: "Bushman Family Organization",
+    url: "https://bushmanfamily.org",
+    category: "group",
+    featured: true,
+    summary:
+      "The home of the Martin and Elizabeth Degen Bushman family: pioneer history, a family tree, reunion registration, a store and donations, all built for their descendants.",
+  },
+  {
     slug: "networkprovidersinc",
     name: "Network Providers, Inc.",
     url: "https://networkprovidersinc.com",
@@ -42,7 +51,6 @@ export const projects: Project[] = [
     category: "local",
     summary:
       "A Bear Lake Valley builder with 25+ years of new homes, remodels, excavation, roads, utilities, flooring and tile.",
-    featured: true,
   },
   {
     slug: "rollingheads",
@@ -116,14 +124,6 @@ export const projects: Project[] = [
     category: "app",
     summary:
       "A staff portal for Bear Lake County Ambulance Service: schedules, on-call, protocols and more, behind a secure sign-in.",
-  },
-  {
-    slug: "bushmanfamily",
-    name: "Bushman Family Organization",
-    url: "https://bushmanfamily.org",
-    category: "group",
-    summary:
-      "The home of the Martin and Elizabeth Degen Bushman family: pioneer history, a family tree, reunion registration, a store and donations, all built for their descendants.",
   },
   {
     slug: "bearriverrifleman",
