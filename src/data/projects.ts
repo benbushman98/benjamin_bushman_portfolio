@@ -99,7 +99,7 @@ export const projects: Project[] = [
     url: "https://cannycancleaners.com",
     category: "local",
     summary:
-      "Trash can cleaning with 2900 psi, 190°F water, with quarterly, semiannual and one-time plans to sign up for online.",
+      "Curbside trash can cleaning in Mesa, Gilbert and Chandler, Arizona, with no-contract plans from $30 to sign up for online.",
   },
   {
     slug: "peppertreekitchen",
