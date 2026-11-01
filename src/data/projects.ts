@@ -118,6 +118,14 @@ export const projects: Project[] = [
       "A staff portal for Bear Lake County Ambulance Service: schedules, on-call, protocols and more, behind a secure sign-in.",
   },
   {
+    slug: "bushmanfamily",
+    name: "Bushman Family Organization",
+    url: "https://bushmanfamily.org",
+    category: "group",
+    summary:
+      "The home of the Martin and Elizabeth Degen Bushman family: pioneer history, a family tree, reunion registration, a store and donations, all built for their descendants.",
+  },
+  {
     slug: "bearriverrifleman",
     name: "Bear River Rifleman",
     url: "https://bearriverrifleman.com",
